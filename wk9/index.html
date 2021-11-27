@@ -13,6 +13,14 @@
         <link href="css/demo.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.js"></script>
+        <script>
+            function reply_click(clicked_object)
+                {
+                    var sql = clicked_object.getAttribute('data-sql');
+                    console.log(sql);
+                    document.getElementById("commands").innerHTML = sql;
+                }
+        </script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -46,12 +54,12 @@
                 <p>Bootstrap v5.1.3</p>
             </div>
             <div class="col-lg-4 order-1 mb-5">
-                <button class=" btn btn-primary btn-block mt-3">1.1</button>
-                <button class=" btn btn-primary btn-block mt-3">1.2</button>
-                <button class=" btn btn-primary btn-block mt-3">1.3</button>
-                <button class=" btn btn-primary btn-block mt-3">1.4</button>
-                <button class=" btn btn-primary btn-block mt-3">1.5</button>
-                <button class=" btn btn-primary btn-block mt-3">1.6</button>
+                <button name="1.1" class=" btn btn-primary btn-block mt-3" data-sql="SELECT * FROM customers LIMIT 10" onClick="reply_click(this)">1.1</button>
+                <button name="1.2" class=" btn btn-primary btn-block mt-3">1.2</button>
+                <button name="1.3" class=" btn btn-primary btn-block mt-3">1.3</button>
+                <button name="1.4" class=" btn btn-primary btn-block mt-3">1.4</button>
+                <button name="1.5" class=" btn btn-primary btn-block mt-3">1.5</button>
+                <button name="1.6" class=" btn btn-primary btn-block mt-3">1.6</button>
             </div>
             <div class="col-lg-8 order-2">
                 <textarea id="commands" class="col-lg-8 order-2 mb-5">DROP TABLE IF EXISTS employees;
