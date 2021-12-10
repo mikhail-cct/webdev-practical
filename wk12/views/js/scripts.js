@@ -23,6 +23,21 @@ function draw(){
 
 }
 
+function name(){
+    alert("test");
+    $.ajax({
+        type: "POST",
+        url: '/post',
+        dataType: 'json',
+        contenType: 'application/json',
+        data: '{"name":"' + $("#input").val() + '"}',
+        async: false,
+        success: setTimeout(draw(), 1000)
+
+    });
+
+};
+
 $(document).ready(function(){
     draw();
 })
