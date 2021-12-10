@@ -5,3 +5,24 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+function draw(){
+    $('#results').empty();
+    $.getHTML = function(url) {
+        return $.ajax({
+            url: url,
+            type: 'GET',
+            cache: false,
+            success: function(html) {
+                $("#results").append(html);
+            }
+        });
+
+    };
+    $.getHTML("/get");
+
+}
+
+$(document).ready(function(){
+    draw();
+})
