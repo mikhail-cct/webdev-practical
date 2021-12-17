@@ -1,18 +1,21 @@
-const   http = require('http'),
-        express = require('express'),
+const   express = require('express'),
+        http = require('http'),
         path = require('path');
 
 const   router = express(),
         server = http.createServer(router);
 
+let     greeting = "World";
+
 router.use(express.static(path.resolve(__dirname,'views')));
+router.use(express.urlencoded({extended: true}));
 router.use(express.json());
 
 router.get('/get', function(req, res) {
 
     res.writeHead(200, {'Content-Type': 'text/html'});
 
-    let hello = "<h1>Hello World!</h1>"
+    let hello = "<h1>Hello, " + greeting + "!</h1>"
 
     let date_time = new Date();
     console.log(date_time);
@@ -23,9 +26,13 @@ router.get('/get', function(req, res) {
 
 router.post('/post', function(req, res) {
 
-    console.log(req.body)
+    console.log(req.body);
+    
+    greeting = req.body.value;
 
-    res.end();
+    console.log(greeting);
+
+    res.redirect('back');
 
 });
 

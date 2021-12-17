@@ -7,7 +7,9 @@
 // Use this file to add JavaScript to your project
 
 function draw(){
+
     $('#results').empty();
+
     $.getHTML = function(url) {
         return $.ajax({
             url: url,
@@ -19,21 +21,25 @@ function draw(){
         });
 
     };
+
     $.getHTML("/get");
 
-}
+};
 
-function name(){
-    alert("test");
+function send_name(){
+
+    alert($("#input").val());
+    
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: '/post',
         dataType: 'json',
         contenType: 'application/json',
-        data: '{"name":"' + $("#input").val() + '"}',
-        async: false,
-        success: setTimeout(draw(), 1000)
-
+        data: {
+            value: $("#input").val()
+        },
+        cache: false,
+        success: setTimeout(draw(), 2000)
     });
 
 };
